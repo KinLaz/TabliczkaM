@@ -431,6 +431,14 @@ function resetQuiz(group) {
   document.getElementById(`${group}-start`).scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+function hideSplash() {
+  const splash = document.getElementById('splash-screen');
+  if (!splash) return;
+  setTimeout(() => {
+    splash.classList.add('hide');
+  }, 1900);
+}
+
 function init() {
   loadSettings();
   bindTabs();
@@ -443,6 +451,7 @@ function init() {
   renderLearnView('learn-division');
   renderBestScores();
   switchPage(state.activePage);
+  hideSplash();
 }
 
 window.addEventListener('load', init);
