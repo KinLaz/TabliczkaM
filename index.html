@@ -255,3 +255,261 @@
   <script src="./script.js"></script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabliczka Mistrza</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" href="./icon.png" />
+  <link rel="apple-touch-icon" href="./icon.png" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+</head>
+<body>
+  <div class="splash-screen" id="splash-screen">
+    <div class="splash-card">
+      <img src="./icon.png" alt="Tabliczka Mistrza" class="splash-icon" />
+      <h1>Tabliczka Mistrza</h1>
+      <p class="splash-subtitle">Dla mojej Marcelinki 💜</p>
+      <p class="splash-small">Ucz się, baw się i błyszcz!</p>
+    </div>
+  </div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Matematyka dla dzieci</p>
+        <h1>Tabliczka Mistrza</h1>
+      </div>
+      <div class="profile-badge">🏅</div>
+    </header>
+
+    <main class="content">
+      <section class="page active" id="page-learn-multiplication" data-page="learn-multiplication">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <p class="tag">Nauka mnożenia</p>
+              <h2>Tabliczka i ćwiczenia</h2>
+            </div>
+            <span class="badge">Przyjazne ćwiczenia</span>
+          </div>
+
+          <div class="page-block">
+            <div class="panel">
+              <h3>Wybierz zakres</h3>
+              <div class="range-buttons" data-range-group="learn-multiplication"></div>
+            </div>
+            <div class="panel mode-panel">
+              <h3>Tryb</h3>
+              <div class="button-group" data-mode-group="learn-multiplication">
+                <button class="mode-button active" data-mode="table">Pokaż tabliczkę</button>
+                <button class="mode-button" data-mode="practice">Ćwicz</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-block result-block" id="learn-multiplication-content">
+            <div class="learn-view" id="learn-multiplication-table"></div>
+            <div class="practice-view hidden" id="learn-multiplication-practice">
+              <div class="question-card">
+                <p class="question-label">Rozwiąż:</p>
+                <h3 class="question-text" id="learn-multiplication-question"></h3>
+              </div>
+              <div class="answer-row">
+                <input type="number" id="learn-multiplication-answer" placeholder="Twoja odpowiedź" inputmode="numeric" />
+                <button class="primary-button" id="learn-multiplication-check">Sprawdź</button>
+              </div>
+              <p class="feedback" id="learn-multiplication-feedback"></p>
+              <button class="secondary-button" id="learn-multiplication-next">Następne działanie</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-learn-division" data-page="learn-division">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <p class="tag">Nauka dzielenia</p>
+              <h2>Działania bez reszty</h2>
+            </div>
+            <span class="badge">Ćwicz uważnie</span>
+          </div>
+
+          <div class="page-block">
+            <div class="panel">
+              <h3>Wybierz zakres</h3>
+              <div class="range-buttons" data-range-group="learn-division"></div>
+            </div>
+            <div class="panel mode-panel">
+              <h3>Tryb</h3>
+              <div class="button-group" data-mode-group="learn-division">
+                <button class="mode-button active" data-mode="table">Pokaż tabliczkę</button>
+                <button class="mode-button" data-mode="practice">Ćwicz</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-block result-block" id="learn-division-content">
+            <div class="learn-view" id="learn-division-table"></div>
+            <div class="practice-view hidden" id="learn-division-practice">
+              <div class="question-card">
+                <p class="question-label">Rozwiąż:</p>
+                <h3 class="question-text" id="learn-division-question"></h3>
+              </div>
+              <div class="answer-row">
+                <input type="number" id="learn-division-answer" placeholder="Twoja odpowiedź" inputmode="numeric" />
+                <button class="primary-button" id="learn-division-check">Sprawdź</button>
+              </div>
+              <p class="feedback" id="learn-division-feedback"></p>
+              <button class="secondary-button" id="learn-division-next">Następne działanie</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-quiz-multiplication" data-page="quiz-multiplication">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <p class="tag">Quiz mnożenia</p>
+              <h2>Sprawdź swój refleks</h2>
+            </div>
+            <span class="badge" id="quiz-multiplication-best">Najlepszy: 0/0</span>
+          </div>
+
+          <div class="page-block">
+            <div class="panel">
+              <h3>Wybierz zakres</h3>
+              <div class="range-buttons" data-range-group="quiz-multiplication"></div>
+            </div>
+            <div class="panel">
+              <h3>Liczba pytań</h3>
+              <div class="button-group" data-quiz-count-group="quiz-multiplication">
+                <button class="mode-button active" data-count="5">5</button>
+                <button class="mode-button" data-count="10">10</button>
+                <button class="mode-button" data-count="15">15</button>
+                <button class="mode-button" data-count="20">20</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-block quiz-start-block">
+            <button class="primary-button large" id="quiz-multiplication-start">Rozpocznij quiz</button>
+          </div>
+
+          <div class="quiz-panel hidden" id="quiz-multiplication-panel">
+            <div class="quiz-status">
+              <span id="quiz-multiplication-counter">0/0</span>
+              <div class="progress-bar">
+                <div class="progress-fill" id="quiz-multiplication-progress"></div>
+              </div>
+            </div>
+            <div class="question-card">
+              <p class="question-label">Ile to jest:</p>
+              <h3 class="question-text" id="quiz-multiplication-question"></h3>
+            </div>
+            <div class="answer-row">
+              <input type="number" id="quiz-multiplication-answer" placeholder="Odpowiedź" inputmode="numeric" />
+              <button class="primary-button" id="quiz-multiplication-check">Sprawdź</button>
+            </div>
+            <p class="feedback" id="quiz-multiplication-feedback"></p>
+            <div class="quiz-actions">
+              <button class="secondary-button" id="quiz-multiplication-next" disabled>Dalej</button>
+            </div>
+          </div>
+
+          <div class="summary-card hidden" id="quiz-multiplication-summary">
+            <h3>Wynik quizu</h3>
+            <div class="summary-score">
+              <p><span id="quiz-multiplication-points">0</span>/<span id="quiz-multiplication-total">0</span></p>
+              <span id="quiz-multiplication-percent">0%</span>
+            </div>
+            <p class="summary-text" id="quiz-multiplication-message"></p>
+            <p class="summary-detail">Błędy: <span id="quiz-multiplication-errors">0</span></p>
+            <button class="primary-button large" id="quiz-multiplication-restart">Zagraj jeszcze raz</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-quiz-division" data-page="quiz-division">
+        <div class="page-card">
+          <div class="page-head">
+            <div>
+              <p class="tag">Quiz dzielenia</p>
+              <h2>Testuj swoje wyniki</h2>
+            </div>
+            <span class="badge" id="quiz-division-best">Najlepszy: 0/0</span>
+          </div>
+
+          <div class="page-block">
+            <div class="panel">
+              <h3>Wybierz zakres</h3>
+              <div class="range-buttons" data-range-group="quiz-division"></div>
+            </div>
+            <div class="panel">
+              <h3>Liczba pytań</h3>
+              <div class="button-group" data-quiz-count-group="quiz-division">
+                <button class="mode-button active" data-count="5">5</button>
+                <button class="mode-button" data-count="10">10</button>
+                <button class="mode-button" data-count="15">15</button>
+                <button class="mode-button" data-count="20">20</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-block quiz-start-block">
+            <button class="primary-button large" id="quiz-division-start">Rozpocznij quiz</button>
+          </div>
+
+          <div class="quiz-panel hidden" id="quiz-division-panel">
+            <div class="quiz-status">
+              <span id="quiz-division-counter">0/0</span>
+              <div class="progress-bar">
+                <div class="progress-fill" id="quiz-division-progress"></div>
+              </div>
+            </div>
+            <div class="question-card">
+              <p class="question-label">Ile to jest:</p>
+              <h3 class="question-text" id="quiz-division-question"></h3>
+            </div>
+            <div class="answer-row">
+              <input type="number" id="quiz-division-answer" placeholder="Odpowiedź" inputmode="numeric" />
+              <button class="primary-button" id="quiz-division-check">Sprawdź</button>
+            </div>
+            <p class="feedback" id="quiz-division-feedback"></p>
+            <div class="quiz-actions">
+              <button class="secondary-button" id="quiz-division-next" disabled>Dalej</button>
+            </div>
+          </div>
+
+          <div class="summary-card hidden" id="quiz-division-summary">
+            <h3>Wynik quizu</h3>
+            <div class="summary-score">
+              <p><span id="quiz-division-points">0</span>/<span id="quiz-division-total">0</span></p>
+              <span id="quiz-division-percent">0%</span>
+            </div>
+            <p class="summary-text" id="quiz-division-message"></p>
+            <p class="summary-detail">Błędy: <span id="quiz-division-errors">0</span></p>
+            <button class="primary-button large" id="quiz-division-restart">Zagraj jeszcze raz</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-button active" data-target="learn-multiplication">Mnożenie</button>
+      <button class="nav-button" data-target="learn-division">Dzielenie</button>
+      <button class="nav-button" data-target="quiz-multiplication">Quiz ×</button>
+      <button class="nav-button" data-target="quiz-division">Quiz ÷</button>
+    </nav>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
