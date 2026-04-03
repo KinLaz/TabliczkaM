@@ -5,8 +5,8 @@ const defaultRange = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 const state = {
   activePage: 'learn-multiplication',
   selected: {
-    'learn-multiplication': [...defaultRange],
-    'learn-division': [...defaultRange],
+    'learn-multiplication': [2],
+    'learn-division': [2],
     'quiz-multiplication': [...defaultRange],
     'quiz-division': [...defaultRange]
   },
@@ -99,15 +99,19 @@ function createRangeButtons() {
 }
 
 function toggleRange(group, value) {
-  const selected = state.selected[group];
-  const numericValue = Number(value);
-  const index = selected.indexOf(numericValue);
-  if (index >= 0 && selected.length === 1) return;
-  if (index >= 0) {
-    selected.splice(index, 1);
+  if (group === 'learn-multiplication' || group === 'learn-division') {
+    state.selected[group] = [Number(value)];
   } else {
-    selected.push(numericValue);
-    selected.sort((a, b) => a - b);
+    const selected = state.selected[group];
+    const numericValue = Number(value);
+    const index = selected.indexOf(numericValue);
+    if (index >= 0 && selected.length === 1) return;
+    if (index >= 0) {
+      selected.splice(index, 1);
+    } else {
+      selected.push(numericValue);
+      selected.sort((a, b) => a - b);
+    }
   }
   saveSettings();
   updateAllRangeUI();
